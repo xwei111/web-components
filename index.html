@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <title>web components</title>
+    <style>
+      /* :root {
+        --borderColor: #0f0;
+      } */
+    </style>
+  </head>
+  <body>
+    <h2>Button</h2>
+    <xw-button onclick="testHandle()">default</xw-button>
+    <xw-button type="primary">primary</xw-button>
+    <xw-button type="success">success</xw-button>
+    <xw-button type="warning">warning</xw-button>
+    <xw-button type="error">error</xw-button>
+    <div style="margin: 10px;"></div>
+    <xw-button disabled>default</xw-button>
+    <xw-button type="primary" disabled>primary</xw-button>
+    <xw-button type="success" disabled>success</xw-button>
+    <xw-button type="warning" disabled>warning</xw-button>
+    <xw-button type="error" disabled>error</xw-button>
+    <div style="margin: 10px;"></div>
+    <xw-button text>default</xw-button>
+    <xw-button text type="primary">primary</xw-button>
+    <xw-button text type="success">success</xw-button>
+    <xw-button text type="warning">warning</xw-button>
+    <xw-button text type="error">error</xw-button>
+    <h2>Input</h2>
+    <xw-input oninput="onInput(event)" onchange="onChange(event)" defaultValue="1"></xw-input>
+    <xw-input id="input" disabled="true"></xw-input>
+    <xw-button id="button" type="primary">切换disabled状态</xw-button>
+  </body>
+  <script src="./components/button.js"></script>
+  <script src="./components/input.js"></script>
+  <script>
+    const testHandle = () => alert('a')
+
+    const onInput = (event) => console.log('input', event.detail)
+
+    const onChange = (event) => console.log('change', event.detail)
+
+    const input = document.getElementById('input')
+
+    const button = document.getElementById('button')
+
+    setTimeout(() => input.value = 123, 1000)
+
+    button.onclick = () => {
+      let disabled = input.getAttribute('disabled')
+      input.disabled = !disabled
+    }
+
+  </script>
+</html>
